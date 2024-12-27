@@ -5,6 +5,8 @@ Motor::Motor(const int forwardPin, const int backwardPin, const int speedPin)
   pinMode(this->forwardPin, OUTPUT);
   pinMode(this->backwardPin, OUTPUT);
   pinMode(this->speedPin, OUTPUT);
+
+  setSpeed(255); // TODO change speed
 }
 
 void Motor::forward() const {
