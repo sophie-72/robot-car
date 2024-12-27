@@ -10,7 +10,7 @@ private:
 
 public:
   UltrasonicSensor(int triggerPin, int echoPin);
-  float getDistanceInCentimeters();
+  float getDistanceInCentimeters() const;
 };
 
 #endif //ULTRASONICSENSOR_H

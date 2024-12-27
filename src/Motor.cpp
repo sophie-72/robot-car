@@ -1,10 +1,7 @@
 #include "Motor.h"
 
-Motor::Motor(int forwardPin, int backwardPin, int speedPin) {
-  this->forwardPin = forwardPin;
-  this->backwardPin = backwardPin;
-  this->speedPin = speedPin;
-
+Motor::Motor(const int forwardPin, const int backwardPin, const int speedPin)
+: forwardPin(forwardPin), backwardPin(backwardPin), speedPin(speedPin) {
   pinMode(this->forwardPin, OUTPUT);
   pinMode(this->backwardPin, OUTPUT);
   pinMode(this->speedPin, OUTPUT);

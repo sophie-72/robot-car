@@ -1,14 +1,13 @@
 #include "UltrasonicSensor.h"
 
-UltrasonicSensor::UltrasonicSensor(int triggerPin, int echoPin) {
-    this->triggerPin = triggerPin;
-    this->echoPin = echoPin;
+UltrasonicSensor::UltrasonicSensor(const int triggerPin, const int echoPin)
+    : triggerPin(triggerPin), echoPin(echoPin) {
 
     pinMode(this->triggerPin, OUTPUT);
     pinMode(this->echoPin, INPUT);
 }
 
-float UltrasonicSensor::getDistanceInCentimeters() {
+float UltrasonicSensor::getDistanceInCentimeters() const {
     digitalWrite(triggerPin, LOW);
     delayMicroseconds(2);
     digitalWrite(triggerPin, HIGH);
