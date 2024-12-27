@@ -11,10 +11,10 @@ private:
 
 public:
   Motor(int forwardPin, int backwardPin, int speedPin);
-  void forward();
-  void backward();
-  void setSpeed();
-  void stop();
+  void forward() const;
+  void backward() const;
+  void setSpeed(int speed) const;
+  void stop() const;
 };
 
 #endif
