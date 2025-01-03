@@ -10,7 +10,7 @@ private:
   int speedPin;
 
 public:
-  Motor(int forwardPin, int backwardPin, int speedPin);
+  Motor(int forwardPin, int backwardPin, int speedPin, int defaultSpeed);
   void forward() const;
   void backward() const;
   void setSpeed(int speed) const;

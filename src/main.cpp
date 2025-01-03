@@ -14,8 +14,8 @@ constexpr int rightMotorSpeedPin = 3;
 constexpr int ultrasonicSensorTriggerPin = 11;
 constexpr int ultrasonicSensorEchoPin = 10;
 
-Motor leftMotor(leftMotorForwardPin, leftMotorBackwardPin, leftMotorSpeedPin);
-Motor rightMotor(rightMotorForwardPin, rightMotorBackwardPin, rightMotorSpeedPin);
+Motor leftMotor(rightMotorForwardPin, rightMotorBackwardPin, rightMotorSpeedPin, 255);
+Motor rightMotor(leftMotorForwardPin, leftMotorBackwardPin, leftMotorSpeedPin, 244);
 UltrasonicSensor ultrasonicSensor(ultrasonicSensorTriggerPin, ultrasonicSensorEchoPin);
 Robot robot(leftMotor, rightMotor, ultrasonicSensor);
 

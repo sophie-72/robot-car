@@ -1,12 +1,12 @@
 #include "Motor.h"
 
-Motor::Motor(const int forwardPin, const int backwardPin, const int speedPin)
+Motor::Motor(const int forwardPin, const int backwardPin, const int speedPin, const int defaultSpeed)
 : forwardPin(forwardPin), backwardPin(backwardPin), speedPin(speedPin) {
   pinMode(this->forwardPin, OUTPUT);
   pinMode(this->backwardPin, OUTPUT);
   pinMode(this->speedPin, OUTPUT);
 
-  setSpeed(255); // TODO change speed
+  setSpeed(defaultSpeed);
 }
 
 void Motor::forward() const {
