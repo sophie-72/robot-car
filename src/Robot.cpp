@@ -1,6 +1,6 @@
 #include "Robot.h"
 
-const float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 15.0;
+const float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 30.0;
 
 Robot::Robot(Motor leftMotor, Motor rightMotor, UltrasonicSensor ultrasonicSensor)
     : leftMotor(leftMotor), rightMotor(rightMotor), ultrasonicSensor(ultrasonicSensor) {
