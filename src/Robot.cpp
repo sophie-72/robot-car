@@ -8,21 +8,33 @@ Robot::Robot(Motor leftMotor, Motor rightMotor, UltrasonicSensor ultrasonicSenso
 }
 
 void Robot::moveForward() {
-    this->leftMotor.forward();
-    this->rightMotor.forward();
+  this->leftMotor.resetSpeedToDefault();
+  this->rightMotor.resetSpeedToDefault();
+
+  this->leftMotor.forward();
+  this->rightMotor.forward();
 }
 
 void Robot::moveBackward() {
+  this->leftMotor.resetSpeedToDefault();
+  this->rightMotor.resetSpeedToDefault();
+
   this->leftMotor.backward();
   this->rightMotor.backward();
 }
 
 void Robot::turnLeft() {
+  this->leftMotor.reduceSpeedToHalf();
+  this->rightMotor.reduceSpeedToHalf();
+
   this->leftMotor.backward();
   this->rightMotor.forward();
 }
 
 void Robot::turnRight() {
+  this->leftMotor.reduceSpeedToHalf();
+  this->rightMotor.reduceSpeedToHalf();
+
   this->leftMotor.forward();
   this->rightMotor.backward();
 }

@@ -1,12 +1,12 @@
 #include "Motor.h"
 
 Motor::Motor(const int forwardPin, const int backwardPin, const int speedPin, const int defaultSpeed)
-: forwardPin(forwardPin), backwardPin(backwardPin), speedPin(speedPin) {
+: forwardPin(forwardPin), backwardPin(backwardPin), speedPin(speedPin), normalSpeed(defaultSpeed) {
   pinMode(this->forwardPin, OUTPUT);
   pinMode(this->backwardPin, OUTPUT);
   pinMode(this->speedPin, OUTPUT);
 
-  setSpeed(defaultSpeed);
+  setSpeed(this->normalSpeed);
 }
 
 void Motor::forward() const {
@@ -22,6 +22,15 @@ void Motor::backward() const {
 void Motor::setSpeed(int speed) const {
   analogWrite(this->speedPin, speed);
 }
+
+void Motor::reduceSpeedToHalf() const {
+  setSpeed(normalSpeed / 2);
+}
+
+void Motor::resetSpeedToDefault() const {
+  setSpeed(normalSpeed);
+}
+
 
 void Motor::stop() const {
   digitalWrite(this->forwardPin, LOW);
