@@ -1,6 +1,6 @@
 #include "Robot.h"
 
-const float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 30.0;
+const float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 20.0;
 
 Robot::Robot(Motor leftMotor, Motor rightMotor, UltrasonicSensor ultrasonicSensor)
     : leftMotor(leftMotor), rightMotor(rightMotor), ultrasonicSensor(ultrasonicSensor) {
@@ -45,7 +45,7 @@ bool Robot::isInFrontOfObstacle() {
 
 void Robot::avoidObstacle() {
   while (isInFrontOfObstacle()) {
-    turnLeft();
+    turnRight();
   }
 }
 

@@ -26,5 +26,5 @@ void setup() {
 
 void loop() {
     robot.move();
-    delay(500);
+    delay(100);
 }

@@ -14,10 +14,10 @@ float UltrasonicSensor::getDistanceInCentimeters() const {
     delayMicroseconds(10);
     digitalWrite(triggerPin, LOW);
 
-    long duration = pulseIn(echoPin, HIGH);
+    unsigned long duration = pulseIn(echoPin, HIGH, 30000);
 
     if (duration == 0) {
-        return -1;
+        return -1.0;
     }
 
     return (duration / 2.0) / 29.1; // Convert to cm
