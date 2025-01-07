@@ -1,13 +1,12 @@
 #include "Robot.h"
 
-const float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 20.0;
+constexpr float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 25.0;
 
-Robot::Robot(Motor leftMotor, Motor rightMotor, UltrasonicSensor ultrasonicSensor)
-    : leftMotor(leftMotor), rightMotor(rightMotor), ultrasonicSensor(ultrasonicSensor) {
-
+Robot::Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &ultrasonicSensor)
+  : leftMotor(leftMotor), rightMotor(rightMotor), ultrasonicSensor(ultrasonicSensor) {
 }
 
-void Robot::moveForward() {
+void Robot::moveForward() const {
   this->leftMotor.resetSpeedToDefault();
   this->rightMotor.resetSpeedToDefault();
 
@@ -15,7 +14,7 @@ void Robot::moveForward() {
   this->rightMotor.forward();
 }
 
-void Robot::moveBackward() {
+void Robot::moveBackward() const {
   this->leftMotor.resetSpeedToDefault();
   this->rightMotor.resetSpeedToDefault();
 
@@ -23,7 +22,7 @@ void Robot::moveBackward() {
   this->rightMotor.backward();
 }
 
-void Robot::turnLeft() {
+void Robot::turnLeft() const {
   this->leftMotor.reduceSpeedToHalf();
   this->rightMotor.reduceSpeedToHalf();
 
@@ -31,7 +30,7 @@ void Robot::turnLeft() {
   this->rightMotor.forward();
 }
 
-void Robot::turnRight() {
+void Robot::turnRight() const {
   this->leftMotor.reduceSpeedToHalf();
   this->rightMotor.reduceSpeedToHalf();
 
@@ -39,25 +38,39 @@ void Robot::turnRight() {
   this->rightMotor.backward();
 }
 
-bool Robot::isInFrontOfObstacle() {
+bool Robot::isInFrontOfObstacle() const {
+  Serial.println(this->ultrasonicSensor.getDistanceInCentimeters());
   return this->ultrasonicSensor.getDistanceInCentimeters() < TOO_CLOSE_THRESHOLD_IN_CENTIMETERS;
 }
 
-void Robot::avoidObstacle() {
+void Robot::avoidObstacle() const {
   while (isInFrontOfObstacle()) {
     turnRight();
+    delay(500);
   }
 }
 
-void Robot::move() {
+bool Robot::isNotMoving() const {
+  return this->ultrasonicSensor.getDistanceInCentimeters() == -1.0;
+}
+
+
+void Robot::move() const {
   if (isInFrontOfObstacle()) {
-    avoidObstacle();
-  }else{
+    if (isNotMoving()) {
+      moveBackward();
+      delay(500);
+      turnLeft();
+      delay(500);
+    } else {
+      avoidObstacle();
+    }
+  } else {
     moveForward();
   }
 }
 
-void Robot::stop() {
+void Robot::stop() const {
   this->leftMotor.stop();
   this->rightMotor.stop();
 }

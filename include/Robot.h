@@ -9,17 +9,18 @@ private:
     Motor leftMotor;
     Motor rightMotor;
     UltrasonicSensor ultrasonicSensor;
-    void moveForward();
-    void moveBackward();
-    void turnLeft();
-    void turnRight();
-    bool isInFrontOfObstacle();
-    void avoidObstacle();
+    void moveForward() const;
+    void moveBackward() const;
+    void turnLeft() const;
+    void turnRight() const;
+    bool isInFrontOfObstacle() const;
+    void avoidObstacle() const;
+    bool isNotMoving() const;
 
 public:
-    Robot(Motor leftMotor, Motor rightMotor, UltrasonicSensor ultrasonicSensor);
-    void move();
-    void stop();
+    Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &ultrasonicSensor);
+    void move() const;
+    void stop() const;
 };
 
 #endif //ROBOT_H
