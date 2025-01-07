@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Motor.h"
 
 Motor::Motor(const int forwardPin, const int backwardPin, const int speedPin, const int defaultSpeed)

@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Robot.h"
 
 constexpr float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 25.0;
