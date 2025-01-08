@@ -8,7 +8,6 @@ UltrasonicSensor::UltrasonicSensor(const int triggerPin, const int echoPin)
 }
 
 float UltrasonicSensor::getDistanceInCentimeters() const {
-    delay(100);
     digitalWrite(triggerPin, LOW);
     delayMicroseconds(2);
     digitalWrite(triggerPin, HIGH);
