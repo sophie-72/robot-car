@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "UltrasonicSensor.h"
 
+constexpr float SPEED_OF_SOUND_IN_CENTIMETERS_PER_MICROSECOND = 0.0343f;
+
 UltrasonicSensor::UltrasonicSensor(const int triggerPin, const int echoPin)
     : triggerPin(triggerPin), echoPin(echoPin) {
     pinMode(this->triggerPin, OUTPUT);
@@ -20,5 +22,5 @@ float UltrasonicSensor::getDistanceInCentimeters() const {
         return -1.0f;
     }
 
-    return (static_cast<float>(duration) / 2.0f) / 29.1f; // Convert to cm
+    return (static_cast<float>(duration) / 2.0f) * SPEED_OF_SOUND_IN_CENTIMETERS_PER_MICROSECOND;
 }
