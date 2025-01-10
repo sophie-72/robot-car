@@ -20,10 +20,6 @@ class Robot {
 
     Direction getAvailableDirection() const;
 
-    void avoidObstacle() const;
-
-    bool isNotMoving() const;
-
 public:
     Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensors &ultrasonicSensors);
 
