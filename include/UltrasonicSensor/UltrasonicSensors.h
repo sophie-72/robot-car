@@ -11,10 +11,10 @@ class UltrasonicSensors {
     EchoSensor leftSensor;
     EchoSensor rightSensor;
 
-    public:
-      UltrasonicSensors(SharedTrigger trigger, EchoSensor frontSensor, EchoSensor leftSensor, EchoSensor rightSensor);
+public:
+    UltrasonicSensors(SharedTrigger trigger, EchoSensor frontSensor, EchoSensor leftSensor, EchoSensor rightSensor);
 
-      SensorsDistances getDistances() const;
+    SensorsDistances getDistances() const;
 };
 
 #endif //ULTRASONICSENSORS_H

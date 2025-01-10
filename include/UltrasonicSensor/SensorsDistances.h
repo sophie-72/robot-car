@@ -6,7 +6,7 @@ class SensorsDistances {
     float leftSensorDistance;
     float rightSensorDistance;
 
-  public :
+public :
     SensorsDistances(float frontSensorDistance, float leftSensorDistance, float rightSensorDistance);
 
     float getFrontSensorDistance() const;

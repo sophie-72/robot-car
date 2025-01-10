@@ -2,7 +2,7 @@
 #include "Motor.h"
 
 Motor::Motor(const int forwardPin, const int backwardPin, const int speedPin, const int defaultSpeed)
-: forwardPin(forwardPin), backwardPin(backwardPin), speedPin(speedPin), normalSpeed(defaultSpeed) {
+  : forwardPin(forwardPin), backwardPin(backwardPin), speedPin(speedPin), normalSpeed(defaultSpeed) {
   pinMode(this->forwardPin, OUTPUT);
   pinMode(this->backwardPin, OUTPUT);
   pinMode(this->speedPin, OUTPUT);
