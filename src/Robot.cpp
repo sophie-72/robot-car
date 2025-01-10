@@ -36,6 +36,11 @@ void Robot::turnRight() const {
   this->rightMotor.backward();
 }
 
+void Robot::stop() const {
+  this->leftMotor.stop();
+  this->rightMotor.stop();
+}
+
 Direction Robot::getAvailableDirection() const {
   if (!frontUltrasonicSensor.isTooCloseToObstacle()) {
     return Direction::Forward;
@@ -65,9 +70,4 @@ void Robot::move() const {
   } else {
     moveBackward();
   }
-}
-
-void Robot::stop() const {
-  this->leftMotor.stop();
-  this->rightMotor.stop();
 }

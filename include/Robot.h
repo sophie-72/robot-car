@@ -20,14 +20,14 @@ class Robot {
 
     void turnRight() const;
 
+    void stop() const;
+
     Direction getAvailableDirection() const;
 
 public:
     Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &frontUltrasonicSensor, const UltrasonicSensor &leftUltrasonicSensor, const UltrasonicSensor &rightUltrasonicSensor);
 
     void move() const;
-
-    void stop() const;
 };
 
 #endif //ROBOT_H
