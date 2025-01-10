@@ -5,7 +5,7 @@ class SharedTrigger {
     int triggerPin;
 
 public:
-    SharedTrigger(int triggerPin);
+    explicit SharedTrigger(int triggerPin);
 
     void triggerSensors() const;
 };

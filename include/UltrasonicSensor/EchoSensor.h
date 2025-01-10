@@ -5,7 +5,7 @@ class EchoSensor {
   int echoPin;
 
 public:
-  EchoSensor(int echoPin);
+  explicit EchoSensor(int echoPin);
 
   float getDistanceInCentimeters() const;
 };
