@@ -2,13 +2,15 @@
 #define ROBOT_H
 
 #include "Motor.h"
-#include "UltrasonicSensor/UltrasonicSensors.h"
+#include "UltrasonicSensor/UltrasonicSensor.h"
 #include "Direction.h"
 
 class Robot {
     Motor leftMotor;
     Motor rightMotor;
-    UltrasonicSensors ultrasonicSensors;
+    UltrasonicSensor frontUltrasonicSensor;
+    UltrasonicSensor leftUltrasonicSensor;
+    UltrasonicSensor rightUltrasonicSensor;
 
     void moveForward() const;
 
@@ -21,7 +23,7 @@ class Robot {
     Direction getAvailableDirection() const;
 
 public:
-    Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensors &ultrasonicSensors);
+    Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &frontUltrasonicSensor, const UltrasonicSensor &leftUltrasonicSensor, const UltrasonicSensor &rightUltrasonicSensor);
 
     void move() const;
 

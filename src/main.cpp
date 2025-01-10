@@ -3,7 +3,7 @@
 #include "Motor.h"
 #include "UltrasonicSensor/SharedTrigger.h"
 #include "UltrasonicSensor/EchoSensor.h"
-#include "UltrasonicSensor/UltrasonicSensors.h"
+#include "UltrasonicSensor/UltrasonicSensor.h"
 
 constexpr int leftMotorForwardPin = 8;
 constexpr int leftMotorBackwardPin = 7;
@@ -22,17 +22,19 @@ Motor leftMotor(rightMotorForwardPin, rightMotorBackwardPin, rightMotorSpeedPin,
 Motor rightMotor(leftMotorForwardPin, leftMotorBackwardPin, leftMotorSpeedPin, 244);
 
 SharedTrigger sharedTrigger(ultrasonicSensorTriggerPin);
-EchoSensor frontUltrasonicSensor(frontUltrasonicSensorEchoPin);
-EchoSensor leftUltrasonicSensor(leftUltrasonicSensorEchoPin);
-EchoSensor rightUltrasonicSensor(rightUltrasonicSensorEchoPin);
-UltrasonicSensors ultrasonicSensors(sharedTrigger, frontUltrasonicSensor, leftUltrasonicSensor, rightUltrasonicSensor);
+EchoSensor frontEcho(frontUltrasonicSensorEchoPin);
+EchoSensor leftEcho(leftUltrasonicSensorEchoPin);
+EchoSensor rightEcho(rightUltrasonicSensorEchoPin);
+UltrasonicSensor frontUltrasonicSensor(sharedTrigger, frontEcho);
+UltrasonicSensor leftUltrasonicSensor(sharedTrigger, leftEcho);
+UltrasonicSensor rightUltrasonicSensor(sharedTrigger, rightEcho);
 
 Robot *robot;
 
 
 void setup() {
     Serial.begin(9600);
-    robot = new Robot(leftMotor, rightMotor, ultrasonicSensors);
+    robot = new Robot(leftMotor, rightMotor, frontUltrasonicSensor, leftUltrasonicSensor, rightUltrasonicSensor);
     Serial.println("Robot Initialized!");
 }
 

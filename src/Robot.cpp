@@ -1,11 +1,9 @@
 #include "Robot.h"
 
 constexpr float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 25.0f;
-constexpr float NOT_MOVING_DIFFERENCE_THRESHOLD_IN_CENTIMETERS = 3.0f;
-constexpr float ERROR_THRESHOLD_IN_CENTIMETERS = 2000.0f;
 
-Robot::Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensors &ultrasonicSensors)
-  : leftMotor(leftMotor), rightMotor(rightMotor), ultrasonicSensors(ultrasonicSensors) {
+Robot::Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &frontUltrasonicSensor, const UltrasonicSensor &leftUltrasonicSensor, const UltrasonicSensor &rightUltrasonicSensor)
+  : leftMotor(leftMotor), rightMotor(rightMotor), frontUltrasonicSensor(frontUltrasonicSensor), leftUltrasonicSensor(leftUltrasonicSensor), rightUltrasonicSensor(rightUltrasonicSensor) {
 }
 
 void Robot::moveForward() const {
@@ -41,18 +39,16 @@ void Robot::turnRight() const {
 }
 
 Direction Robot::getAvailableDirection() const {
-  const SensorsDistances sensorsDistances = this->ultrasonicSensors.getDistances();
-
-  if (sensorsDistances.getFrontSensorDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+  if (frontUltrasonicSensor.getDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
     return Direction::Forward;
   }
 
-  if (sensorsDistances.getRightSensorDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
-    return Direction::Right;
+  if (leftUltrasonicSensor.getDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+    return Direction::Left;
   }
 
-  if (sensorsDistances.getLeftSensorDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
-    return Direction::Left;
+  if (rightUltrasonicSensor.getDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+    return Direction::Right;
   }
 
   return Direction::Backward;
