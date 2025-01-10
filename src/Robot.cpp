@@ -41,17 +41,25 @@ void Robot::turnRight() const {
   this->rightMotor.backward();
 }
 
-bool Robot::isInFrontOfObstacle() const {
-  float distance = this->ultrasonicSensors.getDistances().getFrontSensorDistance();
-  Serial.println(distance);
-  return distance < TOO_CLOSE_THRESHOLD_IN_CENTIMETERS;
-}
+Direction Robot::getAvailableDirection() const {
+  const SensorsDistances sensorsDistances = this->ultrasonicSensors.getDistances();
+  Serial.println(sensorsDistances.getFrontSensorDistance());
+  Serial.println(sensorsDistances.getLeftSensorDistance());
+  Serial.println(sensorsDistances.getRightSensorDistance());
 
-void Robot::avoidObstacle() const {
-  while (isInFrontOfObstacle()) {
-    turnRight();
-    delay(500);
+  if (sensorsDistances.getFrontSensorDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+    return Direction::Forward;
   }
+
+  if (sensorsDistances.getRightSensorDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+    return Direction::Right;
+  }
+
+  if (sensorsDistances.getLeftSensorDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+    return Direction::Left;
+  }
+
+  return Direction::Backward;
 }
 
 bool Robot::isNotMoving() const {
@@ -81,18 +89,35 @@ bool Robot::isNotMoving() const {
 
 
 void Robot::move() const {
-  if (isNotMoving()) {
+  /*if (isNotMoving()) {
     moveBackward();
     delay(500);
     turnLeft();
     delay(500);
   } else {
-    if (isInFrontOfObstacle()) {
+    if (hasObstacleInFront()) {
       avoidObstacle();
     } else {
       moveForward();
     }
+  }*/
+
+  const Direction direction = getAvailableDirection();
+
+  if (direction == Direction::Forward) {
+    Serial.println("Moving forward");
+    moveForward();
+  }else if (direction == Direction::Right) {
+    Serial.println("Moving right");
+    turnRight();
+  }else if (direction == Direction::Left) {
+    Serial.println("Moving left");
+    turnLeft();
+  }else {
+    Serial.println("Moving backward");
+    moveBackward();
   }
+
 }
 
 void Robot::stop() const {

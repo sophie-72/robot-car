@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include "UltrasonicSensor/UltrasonicSensors.h"
 #include "UltrasonicSensor/SharedTrigger.h"
 #include "UltrasonicSensor/EchoSensor.h"
@@ -10,10 +12,14 @@ UltrasonicSensors::UltrasonicSensors(SharedTrigger trigger, EchoSensor frontSens
 
 SensorsDistances UltrasonicSensors::getDistances() const {
     trigger.triggerSensors();
-
     float frontSensorDistance = frontSensor.getDistanceInCentimeters();
+    delay(10);
+    trigger.triggerSensors();
     float leftSensorDistance = leftSensor.getDistanceInCentimeters();
+    delay(10);
+    trigger.triggerSensors();
     float rightSensorDistance = rightSensor.getDistanceInCentimeters();
+    delay(10);
 
     return SensorsDistances(frontSensorDistance, leftSensorDistance, rightSensorDistance);
 }
