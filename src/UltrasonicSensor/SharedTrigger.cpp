@@ -1,11 +1,11 @@
 #include <Arduino.h>
-#include "UltrasonicSensors.h"
+#include "UltrasonicSensor/SharedTrigger.h"
 
-UltrasonicSensors::UltrasonicSensors(int triggerPin) : triggerPin(triggerPin) {
+SharedTrigger::SharedTrigger(int triggerPin) : triggerPin(triggerPin) {
     pinMode(this->triggerPin, OUTPUT);
 }
 
-void UltrasonicSensors::triggerSensors() const {
+void SharedTrigger::triggerSensors() const {
     digitalWrite(triggerPin, LOW);
     delayMicroseconds(2);
     digitalWrite(triggerPin, HIGH);
