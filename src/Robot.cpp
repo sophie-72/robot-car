@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "Robot.h"
 
 constexpr float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 25.0f;
@@ -65,14 +64,13 @@ void Robot::move() const {
 
   if (direction == Direction::Forward) {
     moveForward();
-  }else if (direction == Direction::Right) {
+  } else if (direction == Direction::Right) {
     turnRight();
-  }else if (direction == Direction::Left) {
+  } else if (direction == Direction::Left) {
     turnLeft();
-  }else {
+  } else {
     moveBackward();
   }
-
 }
 
 void Robot::stop() const {
