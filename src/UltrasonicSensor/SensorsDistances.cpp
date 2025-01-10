@@ -5,14 +5,14 @@ SensorsDistances::SensorsDistances(float frontSensorDistance, float leftSensorDi
 
 }
 
-float SensorsDistances::getFrontSensorDistance() {
+float SensorsDistances::getFrontSensorDistance() const{
   return frontSensorDistance;
 }
 
-float SensorsDistances::getLeftSensorDistance() {
+float SensorsDistances::getLeftSensorDistance() const {
   return leftSensorDistance;
 }
 
-float SensorsDistances::getRightSensorDistance() {
+float SensorsDistances::getRightSensorDistance() const {
   return rightSensorDistance;
 }

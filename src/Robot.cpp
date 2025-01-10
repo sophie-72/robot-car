@@ -5,8 +5,8 @@ constexpr float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 25.0f;
 constexpr float NOT_MOVING_DIFFERENCE_THRESHOLD_IN_CENTIMETERS = 3.0f;
 constexpr float ERROR_THRESHOLD_IN_CENTIMETERS = 2000.0f;
 
-Robot::Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &ultrasonicSensor)
-  : leftMotor(leftMotor), rightMotor(rightMotor), ultrasonicSensor(ultrasonicSensor) {
+Robot::Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensors &ultrasonicSensors)
+  : leftMotor(leftMotor), rightMotor(rightMotor), ultrasonicSensors(ultrasonicSensors) {
 }
 
 void Robot::moveForward() const {
@@ -42,8 +42,9 @@ void Robot::turnRight() const {
 }
 
 bool Robot::isInFrontOfObstacle() const {
-  Serial.println(this->ultrasonicSensor.getDistanceInCentimeters());
-  return this->ultrasonicSensor.getDistanceInCentimeters() < TOO_CLOSE_THRESHOLD_IN_CENTIMETERS;
+  float distance = this->ultrasonicSensors.getDistances().getFrontSensorDistance();
+  Serial.println(distance);
+  return distance < TOO_CLOSE_THRESHOLD_IN_CENTIMETERS;
 }
 
 void Robot::avoidObstacle() const {
@@ -61,7 +62,7 @@ bool Robot::isNotMoving() const {
 
   for (float & distance : distances) {
     delay(100);
-    const float currentDistance = this->ultrasonicSensor.getDistanceInCentimeters();
+    const float currentDistance = this->ultrasonicSensors.getDistances().getFrontSensorDistance();
     distance = currentDistance;
 
     if (currentDistance < ERROR_THRESHOLD_IN_CENTIMETERS) {

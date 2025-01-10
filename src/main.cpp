@@ -1,7 +1,9 @@
 #include <Arduino.h>
 #include "Robot.h"
 #include "Motor.h"
-#include "UltrasonicSensor.h"
+#include "UltrasonicSensor/SharedTrigger.h"
+#include "UltrasonicSensor/EchoSensor.h"
+#include "UltrasonicSensor/UltrasonicSensors.h"
 
 constexpr int leftMotorForwardPin = 8;
 constexpr int leftMotorBackwardPin = 7;
@@ -18,13 +20,19 @@ constexpr int rightUltrasonicSensorEchoPin = 12;
 
 Motor leftMotor(rightMotorForwardPin, rightMotorBackwardPin, rightMotorSpeedPin, 255);
 Motor rightMotor(leftMotorForwardPin, leftMotorBackwardPin, leftMotorSpeedPin, 244);
-UltrasonicSensor frontUltrasonicSensor(ultrasonicSensorTriggerPin, frontUltrasonicSensorEchoPin);
+
+SharedTrigger sharedTrigger(ultrasonicSensorTriggerPin);
+EchoSensor frontUltrasonicSensor(frontUltrasonicSensorEchoPin);
+EchoSensor leftUltrasonicSensor(leftUltrasonicSensorEchoPin);
+EchoSensor rightUltrasonicSensor(rightUltrasonicSensorEchoPin);
+UltrasonicSensors ultrasonicSensors(sharedTrigger, frontUltrasonicSensor, leftUltrasonicSensor, rightUltrasonicSensor);
+
 Robot *robot;
 
 
 void setup() {
     Serial.begin(9600);
-    robot = new Robot(leftMotor, rightMotor, frontUltrasonicSensor);
+    robot = new Robot(leftMotor, rightMotor, ultrasonicSensors);
     Serial.println("Robot Initialized!");
 }
 

@@ -14,7 +14,7 @@ class UltrasonicSensors {
     public:
       UltrasonicSensors(SharedTrigger trigger, EchoSensor frontSensor, EchoSensor leftSensor, EchoSensor rightSensor);
 
-      SensorsDistances getDistances();
+      SensorsDistances getDistances() const;
 };
 
 #endif //ULTRASONICSENSORS_H

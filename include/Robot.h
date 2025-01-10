@@ -2,12 +2,12 @@
 #define ROBOT_H
 
 #include "Motor.h"
-#include "UltrasonicSensor.h"
+#include "UltrasonicSensor/UltrasonicSensors.h"
 
 class Robot {
     Motor leftMotor;
     Motor rightMotor;
-    UltrasonicSensor ultrasonicSensor;
+    UltrasonicSensors ultrasonicSensors;
 
     void moveForward() const;
 
@@ -24,7 +24,7 @@ class Robot {
     bool isNotMoving() const;
 
 public:
-    Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &ultrasonicSensor);
+    Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensors &ultrasonicSensors);
 
     void move() const;
 

@@ -9,11 +9,11 @@ class SensorsDistances {
   public :
     SensorsDistances(float frontSensorDistance, float leftSensorDistance, float rightSensorDistance);
 
-    float getFrontSensorDistance();
+    float getFrontSensorDistance() const;
 
-    float getLeftSensorDistance();
+    float getLeftSensorDistance() const;
 
-    float getRightSensorDistance();
+    float getRightSensorDistance() const;
 };
 
 #endif //SENSORSDISTANCES_H

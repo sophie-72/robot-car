@@ -8,7 +8,7 @@ UltrasonicSensors::UltrasonicSensors(SharedTrigger trigger, EchoSensor frontSens
 
 }
 
-SensorsDistances UltrasonicSensors::getDistances() {
+SensorsDistances UltrasonicSensors::getDistances() const {
     trigger.triggerSensors();
 
     float frontSensorDistance = frontSensor.getDistanceInCentimeters();
