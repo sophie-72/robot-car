@@ -8,10 +8,12 @@ class UltrasonicSensor {
     SharedTrigger trigger;
     EchoSensor echo;
 
+    float getDistance() const;
+
 public:
     UltrasonicSensor(SharedTrigger trigger, EchoSensor echo);
 
-    float getDistance() const;
+    bool isTooCloseToObstacle() const;
 };
 
 #endif //ULTRASONICSENSOR_H

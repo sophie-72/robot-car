@@ -1,7 +1,5 @@
 #include "Robot.h"
 
-constexpr float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 25.0f;
-
 Robot::Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &frontUltrasonicSensor, const UltrasonicSensor &leftUltrasonicSensor, const UltrasonicSensor &rightUltrasonicSensor)
   : leftMotor(leftMotor), rightMotor(rightMotor), frontUltrasonicSensor(frontUltrasonicSensor), leftUltrasonicSensor(leftUltrasonicSensor), rightUltrasonicSensor(rightUltrasonicSensor) {
 }
@@ -39,15 +37,15 @@ void Robot::turnRight() const {
 }
 
 Direction Robot::getAvailableDirection() const {
-  if (frontUltrasonicSensor.getDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+  if (!frontUltrasonicSensor.isTooCloseToObstacle()) {
     return Direction::Forward;
   }
 
-  if (leftUltrasonicSensor.getDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+  if (!leftUltrasonicSensor.isTooCloseToObstacle()) {
     return Direction::Left;
   }
 
-  if (rightUltrasonicSensor.getDistance() > TOO_CLOSE_THRESHOLD_IN_CENTIMETERS) {
+  if (!rightUltrasonicSensor.isTooCloseToObstacle()) {
     return Direction::Right;
   }
 
