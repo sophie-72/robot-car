@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include "UltrasonicSensors.h"
 
-UltrasonicSensors::UltrasonicSensors(int triggerPin, UltrasonicSensor frontUltrasonicSensor, UltrasonicSensor leftUltrasonicSensor, UltrasonicSensor rightUltrasonicSensor)
-    : triggerPin(triggerPin), frontUltrasonicSensor(frontUltrasonicSensor), leftUltrasonicSensor(leftUltrasonicSensor), rightUltrasonicSensor(rightUltrasonicSensor) {
+UltrasonicSensors::UltrasonicSensors(int triggerPin) : triggerPin(triggerPin) {
     pinMode(this->triggerPin, OUTPUT);
 }
 

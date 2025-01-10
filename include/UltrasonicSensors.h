@@ -5,12 +5,9 @@
 
 class UltrasonicSensors {
     int triggerPin;
-    UltrasonicSensor frontUltrasonicSensor;
-    UltrasonicSensor leftUltrasonicSensor;
-    UltrasonicSensor rightUltrasonicSensor;
 
 public:
-    UltrasonicSensors(int triggerPin, UltrasonicSensor frontUltrasonicSensor, UltrasonicSensor leftUltrasonicSensor, UltrasonicSensor rightUltrasonicSensor);
+    UltrasonicSensors(int triggerPin);
 
     void triggerSensors() const;
 };

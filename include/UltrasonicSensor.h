@@ -2,11 +2,10 @@
 #define ULTRASONICSENSOR_H
 
 class UltrasonicSensor {
-  int triggerPin;
   int echoPin;
 
 public:
-  UltrasonicSensor(int triggerPin, int echoPin);
+  UltrasonicSensor(int echoPin);
 
   float getDistanceInCentimeters() const;
 };
