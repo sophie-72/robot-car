@@ -44,22 +44,6 @@ void Robot::stop() const {
   this->rightMotor.stop();
 }
 
-Direction Robot::getAvailableDirection() const {
-  if (!frontUltrasonicSensor.isTooCloseToObstacle()) {
-    return Direction::Forward;
-  }
-
-  if (!leftUltrasonicSensor.isTooCloseToObstacle()) {
-    return Direction::Left;
-  }
-
-  if (!rightUltrasonicSensor.isTooCloseToObstacle()) {
-    return Direction::Right;
-  }
-
-  return Direction::Backward;
-}
-
 bool Robot::hasObstaclesFrontLeftRight() const {
   return frontUltrasonicSensor.isTooCloseToObstacle() && leftUltrasonicSensor.isTooCloseToObstacle() &&
          rightUltrasonicSensor.isTooCloseToObstacle();
@@ -90,13 +74,11 @@ bool Robot::hasObstacleRight() const {
 void Robot::move() const {
   if (hasObstaclesFrontLeftRight()) {
     stop();
-  } else if (hasObstaclesFrontLeft()) {
+  } else if (hasObstaclesFrontLeft() || hasObstacleFront()) {
     turnRight();
   } else if (hasObstaclesFrontRight()) {
     turnLeft();
-  } else if (hasObstacleFront()) {
-    turnRight();
-  }else if (hasObstacleLeft()) {
+  } else if (hasObstacleLeft()) {
     turnRight();
     delay(100);
     moveForward();

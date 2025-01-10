@@ -3,7 +3,6 @@
 
 #include "Motor.h"
 #include "UltrasonicSensor/UltrasonicSensor.h"
-#include "Direction.h"
 
 class Robot {
     Motor leftMotor;
@@ -22,8 +21,6 @@ class Robot {
 
     void stop() const;
 
-    Direction getAvailableDirection() const;
-
     bool hasObstaclesFrontLeftRight() const;
 
     bool hasObstaclesFrontLeft() const;
@@ -37,7 +34,8 @@ class Robot {
     bool hasObstacleRight() const;
 
 public:
-    Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &frontUltrasonicSensor, const UltrasonicSensor &leftUltrasonicSensor, const UltrasonicSensor &rightUltrasonicSensor);
+    Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &frontUltrasonicSensor,
+          const UltrasonicSensor &leftUltrasonicSensor, const UltrasonicSensor &rightUltrasonicSensor);
 
     void move() const;
 };
