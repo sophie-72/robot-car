@@ -20,7 +20,7 @@ void Motor::backward() const {
   digitalWrite(this->backwardPin, HIGH);
 }
 
-void Motor::setSpeed(int speed) const {
+void Motor::setSpeed(const int speed) const {
   analogWrite(this->speedPin, speed);
 }
 
