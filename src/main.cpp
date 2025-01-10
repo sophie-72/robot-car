@@ -12,17 +12,19 @@ constexpr int rightMotorBackwardPin = 4;
 constexpr int rightMotorSpeedPin = 3;
 
 constexpr int ultrasonicSensorTriggerPin = 11;
-constexpr int ultrasonicSensorEchoPin = 10;
+constexpr int frontUltrasonicSensorEchoPin = 10;
+constexpr int leftUltrasonicSensorEchoPin = 13;
+constexpr int rightUltrasonicSensorEchoPin = 12;
 
 Motor leftMotor(rightMotorForwardPin, rightMotorBackwardPin, rightMotorSpeedPin, 255);
 Motor rightMotor(leftMotorForwardPin, leftMotorBackwardPin, leftMotorSpeedPin, 244);
-UltrasonicSensor ultrasonicSensor(ultrasonicSensorTriggerPin, ultrasonicSensorEchoPin);
+UltrasonicSensor frontUltrasonicSensor(ultrasonicSensorTriggerPin, frontUltrasonicSensorEchoPin);
 Robot *robot;
 
 
 void setup() {
     Serial.begin(9600);
-    robot = new Robot(leftMotor, rightMotor, ultrasonicSensor);
+    robot = new Robot(leftMotor, rightMotor, frontUltrasonicSensor);
     Serial.println("Robot Initialized!");
 }
 
