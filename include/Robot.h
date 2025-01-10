@@ -24,6 +24,18 @@ class Robot {
 
     Direction getAvailableDirection() const;
 
+    bool hasObstaclesFrontLeftRight() const;
+
+    bool hasObstaclesFrontLeft() const;
+
+    bool hasObstaclesFrontRight() const;
+
+    bool hasObstacleFront() const;
+
+    bool hasObstacleLeft() const;
+
+    bool hasObstacleRight() const;
+
 public:
     Robot(const Motor &leftMotor, const Motor &rightMotor, const UltrasonicSensor &frontUltrasonicSensor, const UltrasonicSensor &leftUltrasonicSensor, const UltrasonicSensor &rightUltrasonicSensor);
 
