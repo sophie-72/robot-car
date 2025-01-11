@@ -40,5 +40,5 @@ void setup() {
 
 void loop() {
     robot->move();
-    delay(100);
+    delay(50);
 }

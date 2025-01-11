@@ -61,7 +61,6 @@ bool Robot::hasObstacleFront() const {
   return frontUltrasonicSensor.isTooCloseToObstacle();
 }
 
-
 bool Robot::hasObstacleLeft() const {
   return leftUltrasonicSensor.isTooCloseToObstacle();
 }
@@ -73,19 +72,38 @@ bool Robot::hasObstacleRight() const {
 
 void Robot::move() const {
   if (hasObstaclesFrontLeftRight()) {
-    stop();
-  } else if (hasObstaclesFrontLeft() || hasObstacleFront()) {
-    turnRight();
+    while (hasObstaclesFrontLeftRight()) {
+      moveBackward();
+    }
+  } else if (hasObstaclesFrontLeft()) {
+    while (hasObstaclesFrontLeft()) {
+      turnRight();
+    }
   } else if (hasObstaclesFrontRight()) {
-    turnLeft();
+    while (hasObstaclesFrontRight()) {
+      turnLeft();
+    }
+  } else if (hasObstacleFront()) {
+    const float distanceLeft = leftUltrasonicSensor.getDistance();
+    const float distanceRight = rightUltrasonicSensor.getDistance();
+
+    if (distanceLeft < distanceRight) {
+      while (hasObstacleFront()) {
+        turnRight();
+      }
+    } else {
+      while (hasObstacleFront()) {
+        turnLeft();
+      }
+    }
   } else if (hasObstacleLeft()) {
-    turnRight();
-    delay(100);
-    moveForward();
+    while (hasObstacleLeft()) {
+      turnRight();
+    }
   } else if (hasObstacleRight()) {
-    turnLeft();
-    delay(100);
-    moveForward();
+    while (hasObstacleRight()) {
+      turnLeft();
+    }
   } else {
     moveForward();
   }
