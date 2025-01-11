@@ -7,9 +7,10 @@
 class UltrasonicSensor {
     SharedTrigger trigger;
     EchoSensor echo;
+    float tooCloseThresholdInCentimeters;
 
 public:
-    UltrasonicSensor(SharedTrigger trigger, EchoSensor echo);
+    UltrasonicSensor(SharedTrigger trigger, EchoSensor echo, float tooCloseThresholdInCentimeters);
 
     float getDistance() const;
 

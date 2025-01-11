@@ -25,9 +25,9 @@ SharedTrigger sharedTrigger(ultrasonicSensorTriggerPin);
 EchoSensor frontEcho(frontUltrasonicSensorEchoPin);
 EchoSensor leftEcho(leftUltrasonicSensorEchoPin);
 EchoSensor rightEcho(rightUltrasonicSensorEchoPin);
-UltrasonicSensor frontUltrasonicSensor(sharedTrigger, frontEcho);
-UltrasonicSensor leftUltrasonicSensor(sharedTrigger, leftEcho);
-UltrasonicSensor rightUltrasonicSensor(sharedTrigger, rightEcho);
+UltrasonicSensor frontUltrasonicSensor(sharedTrigger, frontEcho, 30.0f);
+UltrasonicSensor leftUltrasonicSensor(sharedTrigger, leftEcho, 10.0f);
+UltrasonicSensor rightUltrasonicSensor(sharedTrigger, rightEcho, 10.0f);
 
 Robot *robot;
 

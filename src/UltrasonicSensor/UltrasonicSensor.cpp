@@ -1,10 +1,8 @@
 #include <Arduino.h>
 #include "UltrasonicSensor/UltrasonicSensor.h"
 
-constexpr float TOO_CLOSE_THRESHOLD_IN_CENTIMETERS = 30.0f;
-
-UltrasonicSensor::UltrasonicSensor(SharedTrigger trigger, EchoSensor echo)
-    : trigger(trigger), echo(echo) {
+UltrasonicSensor::UltrasonicSensor(SharedTrigger trigger, EchoSensor echo, float tooCloseThresholdInCentimeters)
+    : trigger(trigger), echo(echo), tooCloseThresholdInCentimeters(tooCloseThresholdInCentimeters) {
 
 }
 
@@ -16,5 +14,5 @@ float UltrasonicSensor::getDistance() const {
 }
 
 bool UltrasonicSensor::isTooCloseToObstacle() const {
-    return getDistance() < TOO_CLOSE_THRESHOLD_IN_CENTIMETERS;
+    return getDistance() < tooCloseThresholdInCentimeters;
 }
