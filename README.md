@@ -23,16 +23,16 @@ This project demonstrates how to build a two-wheeled robotic car using an Arduin
   - Trigger Pin:
     - All three sensors share the same trigger pin, connected to **pin 11** on the Arduino via a small breadboard.
   - Echo Pins:
-    - Front sensor: Connect to **pin 10**
-    - Left sensor: Connect to **pin 13**
-    - Right sensor: Connect to **pin 12**
+    - Front sensor: Connected to **pin 10**
+    - Left sensor: Connected to **pin 13**
+    - Right sensor: Connected to **pin 12**
 
 ### Motors and L298N Motor Driver
-  - Left motor: Connect to the L298N motor driver's **OUT1** and **OUT2**.
-  - Right motor: Connect to the L298N motor driver's **OUT3** and **OUT4**.
+  - Left motor: Connected to the L298N motor driver's **OUT1** and **OUT2**.
+  - Right motor: Connected to the L298N motor driver's **OUT3** and **OUT4**.
   - Arduino Connections:
-    - Left motor: Connect **ENA**, **IN1** and **IN2** to **pins 9, 8 and 7**, respectively.
-    - Right motor: Connect **IN3**, **IN4** and **ENB** to **pins 5, 4 and 3**, respectively.
+    - Left motor: Connected **ENA**, **IN1** and **IN2** to **pins 9, 8 and 7**, respectively.
+    - Right motor: Connected **IN3**, **IN4** and **ENB** to **pins 5, 4 and 3**, respectively.
 
 ## Usage
 1. Build and Upload:
@@ -41,4 +41,4 @@ This project demonstrates how to build a two-wheeled robotic car using an Arduin
    - Connect the **6-slot battery holder** (with batteries obviously 😅) to the Arduino.
    - Connect the **4-slot battery holder** (with batteries) to the L298N motor driver.
    - Turn on the L298N motor driver's power using its power button.
-3. Run the Robot: The robot will autonomously navigate and avoid obstacles. 🥳
+3. The robot will autonomously navigate and avoid obstacles. 🥳
