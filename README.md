@@ -38,7 +38,7 @@ This project demonstrates how to build a two-wheeled robotic car using an Arduin
 1. Build and Upload:
    - Compile and upload the code to the Arduino using **PlatformIO**.
 2. Power On:
-   - Connect the **6-slot battery holder** (with batteries obviously 😅) to the Arduino.
+   - Connect the **6-slot battery holder** (with batteries) to the Arduino.
    - Connect the **4-slot battery holder** (with batteries) to the L298N motor driver.
    - Turn on the L298N motor driver's power using its power button.
 3. The robot will autonomously navigate and avoid obstacles. 🥳
