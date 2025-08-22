@@ -8,7 +8,7 @@ This project demonstrates how to build a two-wheeled robotic car using an Arduin
 - **Arduino UNO**
 - **HC-SR04 Ultrasonic Sensors** (x3)
 - **Motors** (x2)
-  - Typically included in kits with wheels, chassis, power button and 4-slot battery holder.
+  - Typically included in kits with wheels, chassis, power button and a 4-slot battery holder.
 - **L298N Motor Driver**
 - **Power Supply**
   - 4-slot battery holder (for the L298N motor driver)
